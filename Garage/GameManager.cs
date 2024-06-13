@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
 
     void RandomizeWork()
     {
-        workDetail = DetailManager.instance.details[1];
-        workType = Random.Range(1, 2);
+        workDetail = Random.Range(0, DetailManager.instance.details.Length);
+        workType = Random.Range(0, 3);
 
         switch(workType)
         {
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
                     GameObject obj = Instantiate(workDetail.detail, detailSpawner);
                     obj.GetComponent<Rigidbody>().isKinematic = false;
 
-                    //blackBoardText.text = $"Замените деталь {workDetail.name} на новую!";
+                    blackBoardText.text = $"Г‡Г Г¬ГҐГ­ГЁГІГҐ Г¤ГҐГІГ Г«Гј {workDetail.name} Г­Г  Г­Г®ГўГіГѕ!";
                     break;
                 }
             case 1:
@@ -38,25 +38,19 @@ public class GameManager : MonoBehaviour
                     obj.GetComponentInChildren<PlaceDetector>().onCar = false;
                     obj.GetComponent<Rigidbody>().isKinematic = false;
 
-                    //workDetail.detail.SetActive(false);
+                    workDetail.detail.SetActive(false);
                     for (int i = 1; i < obj.transform.childCount; i++)
                     {
                         obj.transform.GetChild(i).gameObject.SetActive(true);
                     }
-                    blackBoardText.text = $"Установите деталь {workDetail.name}!\nСтучит передняя подвеска, протяните болты!\nУстановленную дверь необходимо покрасить";
+                    blackBoardText.text = $"Г“Г±ГІГ Г­Г®ГўГЁГІГҐ Г¤ГҐГІГ Г«Гј {workDetail.name}!\nГ‘ГІГіГ·ГЁГІ ГЇГҐГ°ГҐГ¤Г­ГїГї ГЇГ®Г¤ГўГҐГ±ГЄГ , ГЇГ°Г®ГІГїГ­ГЁГІГҐ ГЎГ®Г«ГІГ»!\nГ“Г±ГІГ Г­Г®ГўГ«ГҐГ­Г­ГіГѕ Г¤ГўГҐГ°Гј Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г® ГЇГ®ГЄГ°Г Г±ГЁГІГј";
                     break;
                 }
             case 2:
                 {
-                    //blackBoardText.text = $"Покрасьте деталь {workDetail.name}!";
+                    blackBoardText.text = $"ГЏГ®ГЄГ°Г Г±ГјГІГҐ Г¤ГҐГІГ Г«Гј {workDetail.name}!";
                     break;
                 }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
