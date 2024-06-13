@@ -13,13 +13,11 @@ public class CarLift : MonoBehaviour
     {
         isEnabled = true;
         isUp = true;
-        //StartCoroutine("StopMove");
     }
     public void Down()
     {
         isEnabled = false;
         isUp = false;
-        //StartCoroutine("StopMove");
     }
 
     IEnumerator StopMove()
